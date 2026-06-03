@@ -50,6 +50,7 @@ df = pd.read_csv(
     names=colunas
 )
 
+
 ## ETAPA 1 - classificação dos dados 
 df["diagnosis"] = df["diagnosis"].map({
     "B": 0,
@@ -59,7 +60,7 @@ df["diagnosis"] = df["diagnosis"].map({
 ## X = variáveis de entrada, todos os atributos menos o diagnóstico
 ## y = diagnóstico, variável de saída que estamos tentando prever
 
-X = df.drop(columns=["diagnosis"])
+X = df.drop(columns=["diagnosis", "id"])
 y = df["diagnosis"]
 
 ## TREINO E TESTE
@@ -183,7 +184,7 @@ for config in arvores:
 
     graph.render(
         filename=nome_arquivo,
-        format="pdf",
+        format="png",
         cleanup=True
     )
 
